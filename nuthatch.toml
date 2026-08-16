@@ -1,0 +1,16 @@
+[nest]
+name = "graph-tap-escrow-nest"
+chain = "arbitrum-one"
+chain_id = 42161
+rpc_urls = [
+    "https://arb1.arbitrum.io/rpc",
+]
+schema_version = 1
+
+[[contracts]]
+alias = "escrow"
+address = "0x8f477709eF277d4A880801D01A140a9CF88bA0d3"
+start_block = 159124376
+abi = "abis/escrow.json"
+# Legacy TAP Escrow's complete state-transition surface.
+events = ["Deposit", "Redeem", "Withdraw", "Thaw", "CancelThaw", "AuthorizeSigner", "RevokeAuthorizedSigner", "ThawSigner", "CancelThawSigner"]

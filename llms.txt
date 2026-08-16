@@ -1,0 +1,30 @@
+# nuthatch nest on arbitrum-one
+
+A self-hosted blockchain index. Query it locally; there is no third-party API.
+
+## Contracts
+- `escrow` = 0x8f477709eF277d4A880801D01A140a9CF88bA0d3
+
+## Tables (one per contract event)
+- `escrow__authorize_signer` - AuthorizeSigner(address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, signer, sender)
+- `escrow__cancel_thaw` - CancelThaw(address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, sender, receiver)
+- `escrow__cancel_thaw_signer` - CancelThawSigner(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, sender, authorizedSigner, thawEndTimestamp)
+- `escrow__deposit` - Deposit(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, sender, receiver, amount)
+- `escrow__redeem` - Redeem(address,address,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, sender, receiver, allocationID, expectedAmount, actualAmount)
+- `escrow__revoke_authorized_signer` - RevokeAuthorizedSigner(address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, sender, authorizedSigner)
+- `escrow__thaw` - Thaw(address,address,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, sender, receiver, amount, totalAmountThawing, thawEndTimestamp)
+- `escrow__thaw_signer` - ThawSigner(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, sender, authorizedSigner, thawEndTimestamp)
+- `escrow__withdraw` - Withdraw(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, sender, receiver, amount)
+
+## Live HTTP API (run `nuthatch dev`)
+- `GET /`                    index status
+- `GET /tables`              every table with its columns
+- `GET /table/{name}?limit=N` recent rows of one table (hot + sealed)
+- `GET /entity/{id}`         one row by id (`{block:012}-{logindex:06}`)
+- `GET /sql?q=SELECT...`     read-only SQL; each table is a view named `{alias}__{event}`
+- `GET /balances?limit=N`    top holder balances (when an ERC-20 Transfer table is present)
+- `GET /balance/{address}`   one address's derived balance
+
+## MCP (for coding agents)
+Run `nuthatch mcp` (stdio) to expose tools: status, schema, tables, table, sql, entity,
+balance, top_balances. Fully offline against the local instance; nothing phones home.

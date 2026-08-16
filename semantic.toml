@@ -1,0 +1,134 @@
+# semantic.toml - what this nest's data *means* (RFC-0016). Read by the MCP `schema`
+# tool, the admin UI, and the scaffolded skill. Edit descriptions freely; the
+# `[table.*.footguns]` are DERIVED from the ABI and regenerated - leave them be.
+
+schema_version = 1
+
+[nest]
+description = "The `graph-tap-escrow-nest` nest on arbitrum-one. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.escrow__authorize_signer]
+description = "`AuthorizeSigner(address,address)` events emitted by the `escrow` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per AuthorizeSigner(address,address) event"
+
+[table.escrow__authorize_signer.columns]
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+signer = "The `signer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.escrow__cancel_thaw]
+description = "`CancelThaw(address,address)` events emitted by the `escrow` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CancelThaw(address,address) event"
+
+[table.escrow__cancel_thaw.columns]
+receiver = "The `receiver` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.escrow__cancel_thaw_signer]
+description = "`CancelThawSigner(address,address,uint256)` events emitted by the `escrow` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CancelThawSigner(address,address,uint256) event"
+
+[table.escrow__cancel_thaw_signer.columns]
+authorizedSigner = "The `authorizedSigner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawEndTimestamp = "The `thawEndTimestamp` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.escrow__cancel_thaw_signer.footguns]
+big_ints = ["thawEndTimestamp"]
+overflows_dec = ["thawEndTimestamp"]
+
+[table.escrow__deposit]
+description = "`Deposit(address,address,uint256)` events emitted by the `escrow` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Deposit(address,address,uint256) event"
+
+[table.escrow__deposit.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+receiver = "The `receiver` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.escrow__deposit.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.escrow__redeem]
+description = "`Redeem(address,address,address,uint256,uint256)` events emitted by the `escrow` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Redeem(address,address,address,uint256,uint256) event"
+
+[table.escrow__redeem.columns]
+actualAmount = "The `actualAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+allocationID = "The `allocationID` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+expectedAmount = "The `expectedAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+receiver = "The `receiver` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.escrow__redeem.footguns]
+big_ints = [
+    "expectedAmount",
+    "actualAmount",
+]
+overflows_dec = [
+    "expectedAmount",
+    "actualAmount",
+]
+
+[table.escrow__revoke_authorized_signer]
+description = "`RevokeAuthorizedSigner(address,address)` events emitted by the `escrow` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per RevokeAuthorizedSigner(address,address) event"
+
+[table.escrow__revoke_authorized_signer.columns]
+authorizedSigner = "The `authorizedSigner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.escrow__thaw]
+description = "`Thaw(address,address,uint256,uint256,uint256)` events emitted by the `escrow` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Thaw(address,address,uint256,uint256,uint256) event"
+
+[table.escrow__thaw.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+receiver = "The `receiver` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawEndTimestamp = "The `thawEndTimestamp` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+totalAmountThawing = "The `totalAmountThawing` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.escrow__thaw.footguns]
+big_ints = [
+    "amount",
+    "totalAmountThawing",
+    "thawEndTimestamp",
+]
+overflows_dec = [
+    "amount",
+    "totalAmountThawing",
+    "thawEndTimestamp",
+]
+
+[table.escrow__thaw_signer]
+description = "`ThawSigner(address,address,uint256)` events emitted by the `escrow` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ThawSigner(address,address,uint256) event"
+
+[table.escrow__thaw_signer.columns]
+authorizedSigner = "The `authorizedSigner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+thawEndTimestamp = "The `thawEndTimestamp` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.escrow__thaw_signer.footguns]
+big_ints = ["thawEndTimestamp"]
+overflows_dec = ["thawEndTimestamp"]
+
+[table.escrow__withdraw]
+description = "`Withdraw(address,address,uint256)` events emitted by the `escrow` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Withdraw(address,address,uint256) event"
+
+[table.escrow__withdraw.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+receiver = "The `receiver` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sender = "The `sender` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.escrow__withdraw.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[view]
+
+# Authored views (views/*.sql) are described here so the MCP/`/schema` can render them:
+# [view.your_view_name]
+# description = "What this derivation computes."
