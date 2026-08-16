@@ -9,6 +9,7 @@ SELECT
   NULL::VARCHAR AS allocation_id,
   amount_dec::VARCHAR AS amount,
   amount_dec::VARCHAR AS balance_delta,
+  block_number,
   block_timestamp AS timestamp,
   tx_hash
 FROM escrow__deposit
@@ -21,6 +22,7 @@ SELECT
   "allocationID",
   "actualAmount_dec"::VARCHAR,
   '-' || "actualAmount_dec"::VARCHAR,
+  block_number,
   block_timestamp,
   tx_hash
 FROM escrow__redeem
@@ -33,6 +35,7 @@ SELECT
   NULL::VARCHAR,
   amount_dec::VARCHAR,
   '-' || amount_dec::VARCHAR,
+  block_number,
   block_timestamp,
   tx_hash
 FROM escrow__withdraw;

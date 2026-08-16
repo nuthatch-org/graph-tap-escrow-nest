@@ -17,5 +17,6 @@ nuthatch dev --dir graph-tap-escrow-nest --rpc https://your-archive-rpc
 pretending that a thaw request is a withdrawal.
 
 The contract is the legacy TAP Escrow at `0x8f477709eF277d4A880801D01A140a9CF88bA0d3`, from block
-`159,124,376`. Its ABI is vendored. Fixed-block parity fixtures against the retired subgraph remain
-the release gate before this is listed as available.
+`159,124,376`. Its ABI is vendored. The check queries are present; a full-history, archive-backed
+fixture recording is in progress. Fixed-block parity fixtures against the retired subgraph remain the
+release gate before this is listed as available.
