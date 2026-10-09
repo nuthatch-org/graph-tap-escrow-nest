@@ -5,7 +5,7 @@ surface of deployment `QmUhiH6Z5xo6o3GNzsSvqpGKLmCt6w5WzKQ1yHk6C8AA8S` without r
 hosted subgraph.
 
 ```sh
-nuthatch init --from https://github.com/nightswatchhq/graph-tap-escrow-nest
+nuthatch init --from https://github.com/nuthatch-org/graph-tap-escrow-nest
 nuthatch dev --dir graph-tap-escrow-nest --rpc https://your-archive-rpc
 ```
 
